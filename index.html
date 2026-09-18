@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google" value="notranslate">
+    <link rel="shortcut icon" href="static/remono_logo_whiteback.png">
+    <title>remono</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+      function handleCredentialResponse(response) {
+        console.log("Encoded JWT ID token: " + response.credential);
+        // サーバーでこのJWTを検証し、認証処理を行います
+    }
+    
+    window.onload = function () {
+        google.accounts.id.initialize({
+            client_id: '1056071278981-ip25c6s7emsnvrvcr43hbs82isllh7ec.apps.googleusercontent.com',
+            callback: handleCredentialResponse
+        });
+    
+        google.accounts.id.renderButton(
+            document.getElementById("buttonDiv"),
+            { theme: "outline", size: "large" } // カスタマイズオプション
+        );
+    
+        google.accounts.id.prompt(); // 自動サインインのプロンプトを表示
+
+        // Apple Sign in は無効化（削除済み）
+    }
+    </script>
+  <script defer src="gui.js"></script></head>
+  <body>
+  </body>
+</html>
